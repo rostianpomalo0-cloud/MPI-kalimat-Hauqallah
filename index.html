@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MPI Kalimat Tayyibah Hauqallah - Rostian Pomalo, S.Pd.I., Gr</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Amiri & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- html2pdf.js for PDF Generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#064e3b',
+                            950: '#022c22'
+                        },
+                        amber: {
+                            50: '#fffbeb',
+                            300: '#fcd34d',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        amiri: ['Amiri', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .arabic-text {
+            font-family: 'Amiri', serif;
+            direction: rtl;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #064e3b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #059669;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #10b981;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .animate-marquee {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 25s linear infinite;
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+        .tts-grid {
+            display: grid;
+            grid-template-columns: repeat(10, minmax(0, 1fr));
+            gap: 2px;
+            background-color: #064e3b;
+            padding: 4px;
+            border-radius: 12px;
+            border: 2px solid #059669;
+        }
+        .tts-cell {
+            aspect-ratio: 1;
+            position: relative;
+            border-radius: 4px;
+        }
+        .tts-cell-active {
+            background-color: #065f46;
+            border: 1px solid #10b981;
+        }
+        .tts-cell-blocked {
+            background-color: #022c22;
+        }
+        .tts-num {
+            position: absolute;
+            top: 1px;
+            left: 2px;
+            font-size: 8px;
+            font-weight: bold;
+            color: #fbbf24;
+            pointer-events: none;
+        }
+        .tts-cell input {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            text-align: center;
+            font-weight: 800;
+            color: #ffffff;
+            font-size: 14px;
+            text-transform: uppercase;
+            outline: none;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-emerald-950 via-teal-950 to-emerald-900 text-slate-100 font-sans min-h-screen flex flex-col justify-between selection:bg-amber-400 selection:text-emerald-950 overflow-x-hidden">
+
+    <!-- TOPBAR NAVIGATION WITH RUNNING TEXT MARQUEE & LOGO -->
+    <header class="bg-emerald-950/90 border-b border-emerald-700/80 px-4 py-2 flex flex-wrap justify-between items-center gap-2 shadow-lg backdrop-blur-md z-30">
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-xl bg-amber-400/20 border border-amber-400/60 p-1 flex items-center justify-center shadow-md">
+                <img src="https://iili.io/nvQaSgS.png" alt="Logo Madrasah" class="w-full h-full object-contain" onerror="this.onerror=null; this.src='https://placehold.co/100x100/059669/ffffff?text=MPI';">
+            </div>
+            <div>
+                <h1 class="text-sm md:text-base font-extrabold text-amber-300 tracking-wide flex items-center gap-1.5">
+                    <span>MPI KALIMAT TAYYIBAH HAUQALLAH</span>
+                </h1>
+                <p class="text-[11px] text-emerald-300 font-medium">Akidah Akhlak Kelas V MI • MIS Alkhairaat Tilamuta</p>
+            </div>
+        </div>
+
+        <!-- RUNNING TEXT MARQUEE -->
+        <div class="flex-1 max-w-xl mx-4 hidden md:block overflow-hidden bg-emerald-900/60 border border-emerald-700/60 rounded-full px-4 py-1 text-xs text-amber-200">
+            <div class="animate-marquee">
+                <i class="fa-solid fa-bullhorn text-amber-400 mr-2"></i>
+                <span class="font-bold">Mata Pelajaran:</span> Akidah Akhlak Kelas V MI | 
+                <span class="font-bold">Pengembang:</span> Rostian Pomalo, S.Pd.I.,Gr (MIS Alkhairaat Tilamuta) | 
+                <span class="font-bold">Tujuan:</span> Memahami Makna, Waktu Pengucapan & Keutamaan Kalimat Hauqallah serta Integrasi Kelestarian Pesisir Tilamuta Boalemo.
+            </div>
+        </div>
+
+        <!-- BGM TOGGLE BUTTON -->
+        <div class="flex items-center gap-2">
+            <button onclick="toggleBGM()" class="px-3 py-1.5 rounded-full bg-emerald-900/80 hover:bg-emerald-800 text-amber-300 border border-emerald-600 text-xs font-semibold flex items-center gap-1.5 shadow-md transition-all">
+                <i id="bgm-icon" class="fa-solid fa-music"></i>
+                <span id="bgm-text" class="hidden sm:inline">Musik ON</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN APP CONTAINER -->
+    <main id="app-container" class="flex-1 flex flex-col justify-center relative p-3 md:p-6 overflow-y-auto min-h-[85vh]">
+
+        <!-- 1. SPLASH SCREEN -->
+        <div id="splash-screen" class="fixed inset-0 z-50 bg-gradient-to-br from-emerald-950 via-teal-950 to-emerald-900 flex flex-col items-center justify-center p-6 text-center transition-opacity duration-700">
+            <div class="w-24 h-24 mb-6 rounded-3xl bg-amber-400/20 border-2 border-amber-400 p-2 flex items-center justify-center shadow-2xl animate-bounce">
+                <img src="https://iili.io/nvQaSgS.png" alt="Logo Splash" class="w-full h-full object-contain">
+            </div>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-amber-300 mb-2">Media Pembelajaran Interaktif</h2>
+            <p class="text-lg font-bold text-white mb-4">Kalimat Tayyibah Hauqallah</p>
+            <div class="flex items-center gap-2 text-xs text-emerald-300 bg-emerald-900/80 px-4 py-2 rounded-full border border-emerald-700">
+                <i class="fa-solid fa-spinner animate-spin text-amber-400"></i> Memuat Media Pembelajaran...
+            </div>
+        </div>
+
+        <!-- 2. HALAMAN COVER MAIN -->
+        <div id="cover-page" class="flex flex-col items-center justify-center my-auto w-full">
+            <div class="max-w-3xl w-full bg-emerald-950/80 border-2 border-emerald-600/80 rounded-3xl p-6 md:p-10 shadow-2xl backdrop-blur-md relative overflow-hidden space-y-6">
+                <div class="flex flex-col items-center justify-center space-y-3">
+                    <div class="w-20 h-20 rounded-2xl bg-amber-400/20 border-2 border-amber-400 p-2 flex items-center justify-center shadow-xl">
+                        <img src="https://iili.io/nvQaSgS.png" alt="Logo Cover" class="w-full h-full object-contain">
+                    </div>
+                    <span class="bg-amber-400/20 text-amber-300 border border-amber-400/40 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
+                        Akidah Akhlak • Kelas V / Fase C MI
+                    </span>
+                    <h1 class="text-2xl md:text-4xl font-extrabold text-white leading-tight">
+                        Kalimat Tayyibah <span class="text-amber-300 underline decoration-amber-500 underline-offset-8">Hauqallah</span>
+                    </h1>
+                    <p class="arabic-text text-2xl md:text-3xl text-amber-200 font-bold my-2">لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ الْعَلِيِّ الْعَظِيمِ</p>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4">
+                    <button onclick="openModal('developer-modal')" class="px-4 py-3 rounded-2xl bg-emerald-900/90 hover:bg-emerald-800 text-emerald-100 font-bold text-xs border border-emerald-600 shadow-lg transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-id-card text-amber-400 text-sm"></i> Informasi Pengembang
+                    </button>
+                    <button onclick="openModal('objective-modal')" class="px-4 py-3 rounded-2xl bg-emerald-900/90 hover:bg-emerald-800 text-emerald-100 font-bold text-xs border border-emerald-600 shadow-lg transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-bullseye text-amber-400 text-sm"></i> Tujuan Pembelajaran
+                    </button>
+                    <button onclick="startApp()" class="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-emerald-950 font-extrabold text-sm shadow-xl transition-all transform hover:scale-105 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-circle-play text-base"></i> MULAI BELAJAR
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- FLOATING SLIDE: INFORMASI PENGEMBANG -->
+        <div id="developer-modal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-md hidden items-center justify-center p-4">
+            <div class="bg-gradient-to-b from-emerald-950 to-teal-950 border-2 border-amber-400/80 rounded-3xl max-w-md w-full p-6 text-center shadow-2xl relative space-y-4">
+                <div class="relative w-24 h-24 mx-auto">
+                    <img src="https://iili.io/CSAHRQ1.png" alt="Foto Rostian Pomalo" class="w-full h-full rounded-full object-cover border-4 border-amber-400 shadow-lg" onerror="this.onerror=null; this.src='https://placehold.co/150x150/059669/ffffff?text=RP';">
+                </div>
+                <div>
+                    <h3 class="text-lg font-extrabold text-white">Rostian Pomalo, S.Pd.I.,Gr</h3>
+                    <p class="text-xs text-amber-300 font-semibold mt-0.5">Guru Akidah Akhlak & Pengembang MPI</p>
+                    <p class="text-xs text-emerald-200 mt-1"><i class="fa-solid fa-school text-amber-400 mr-1"></i> MIS Alkhairaat Tilamuta</p>
+                    <p class="text-[11px] text-emerald-300 mt-0.5"><i class="fa-solid fa-envelope text-amber-400 mr-1"></i> rostianpomalo0@gmail.com</p>
+                </div>
+                <button onclick="closeModal('developer-modal')" class="w-full py-2.5 bg-amber-500 hover:bg-amber-600 text-emerald-950 font-bold rounded-xl shadow-md text-xs">
+                    Kembali ke Cover
+                </button>
+            </div>
+        </div>
+
+        <!-- FLOATING SLIDE: TUJUAN PEMBELAJARAN -->
+        <div id="objective-modal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-md hidden items-center justify-center p-4">
+            <div class="bg-gradient-to-b from-emerald-950 to-teal-950 border-2 border-amber-400/80 rounded-3xl max-w-lg w-full p-6 shadow-2xl relative space-y-4">
+                <h3 class="text-lg font-extrabold text-amber-300 text-center flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-bullseye"></i> Tujuan Pembelajaran & KBC
+                </h3>
+                <div class="bg-emerald-900/60 p-4 rounded-2xl border border-emerald-700/80 text-xs text-emerald-100 leading-relaxed space-y-2">
+                    <p><strong>1. Tujuan Pembelajaran:</strong> Peserta didik mampu menganalisis makna, mengurutkan keutamaan, serta membiasakan pengucapan kalimat tayyibah Hauqallah dalam kehidupan sehari-hari dan pemecahan masalah lingkungan pesisir Tilamuta secara tepat.</p>
+                    <p><strong>2. Kurikulum Berbasis Cinta (KBC):</strong> Menanamkan nilai kasih sayang kepada Allah SWT, sesama manusia, serta kelestarian alam lingkungan Boalemo dan Teluk Tomini.</p>
+                </div>
+                <button onclick="closeModal('objective-modal')" class="w-full py-2.5 bg-amber-500 hover:bg-amber-600 text-emerald-950 font-bold rounded-xl shadow-md text-xs">
+                    Kembali ke Cover
+                </button>
+            </div>
+        </div>
+
+        <!-- 3. INPUT IDENTITAS SISWA -->
+        <div id="identity-page" class="hidden flex-col items-center justify-center my-auto w-full">
+            <div class="max-w-md w-full bg-emerald-950/80 border-2 border-emerald-600 rounded-3xl p-6 md:p-8 shadow-2xl space-y-5 backdrop-blur-md">
+                <div class="text-center">
+                    <h2 class="text-xl font-extrabold text-amber-300">Identitas Peserta Didik</h2>
+                    <p class="text-xs text-emerald-200 mt-1">Masukkan nama dan kelas sebelum memulai</p>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-emerald-200 mb-1">Nama Lengkap Siswa:</label>
+                        <input id="student-name-input" type="text" placeholder="Contoh: Ahmad Raihan" class="w-full px-4 py-3 rounded-xl bg-emerald-900/80 border border-emerald-600 text-white placeholder-emerald-400/60 text-sm focus:outline-none focus:border-amber-400">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-emerald-200 mb-1">Kelas / Rombel:</label>
+                        <input id="student-class-input" type="text" value="Kelas V A" class="w-full px-4 py-3 rounded-xl bg-emerald-900/80 border border-emerald-600 text-white placeholder-emerald-400/60 text-sm focus:outline-none focus:border-amber-400">
+                    </div>
+                </div>
+                <button onclick="submitIdentity()" class="w-full py-3.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-emerald-950 font-extrabold text-sm rounded-xl shadow-xl transition-all">
+                    Lanjutkan ke Panduan <i class="fa-solid fa-arrow-right ml-1"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- 4. PANDUAN PENGGUNA -->
+        <div id="guide-page" class="hidden flex-col items-center justify-center my-auto w-full">
+            <div class="max-w-xl w-full bg-emerald-950/80 border-2 border-emerald-600 rounded-3xl p-6 md:p-8 shadow-2xl space-y-6 backdrop-blur-md">
+                <div class="flex justify-between items-center border-b border-emerald-700/80 pb-3">
+                    <h2 id="guide-step-title" class="text-lg font-bold text-amber-300">Panduan 1</h2>
+                    <span id="guide-step-counter" class="text-xs font-bold text-emerald-300 bg-emerald-900 px-3 py-1 rounded-full border border-emerald-700">1 dari 3</span>
+                </div>
+                <div id="guide-step-desc" class="text-sm text-emerald-100 leading-relaxed min-h-[100px] flex items-center">
+                    Petunjuk aplikasi.
+                </div>
+                <div class="flex justify-between items-center pt-2">
+                    <button onclick="prevGuideStep()" class="px-4 py-2 rounded-xl bg-emerald-900 border border-emerald-700 text-emerald-200 text-xs font-semibold hover:bg-emerald-800">
+                        <i class="fa-solid fa-arrow-left mr-1"></i> Kembali
+                    </button>
+                    <button onclick="nextGuideStep()" class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-emerald-950 text-xs font-extrabold shadow-md">
+                        Selanjutnya <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. DASHBOARD MENU UTAMA -->
+        <div id="main-menu-page" class="hidden flex-col w-full max-w-4xl mx-auto space-y-6">
+            <!-- Header User Profile -->
+            <div class="bg-emerald-950/80 border border-emerald-700 rounded-3xl p-4 md:p-6 flex flex-wrap justify-between items-center gap-4 shadow-xl">
+                <div class="flex items-center space-x-4">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-400/20 border-2 border-amber-400 p-1 flex items-center justify-center">
+                        <img src="https://iili.io/nvQaSgS.png" alt="Logo User" class="w-full h-full object-contain">
+                    </div>
+                    <div>
+                        <h2 id="user-profile-name" class="text-lg font-extrabold text-white">Nama Siswa</h2>
+                        <p id="user-profile-class" class="text-xs text-amber-300 font-semibold">Kelas: V MI</p>
+                        <p class="text-[11px] text-emerald-300 mt-0.5"><i class="fa-solid fa-location-dot text-amber-400"></i> MIS Alkhairaat Tilamuta, Boalemo</p>
+                    </div>
+                </div>
+                <div class="bg-emerald-900/80 px-4 py-2 rounded-2xl border border-emerald-600/80 text-right">
+                    <p class="text-[11px] text-emerald-300 font-medium">Progres Pembelajaran:</p>
+                    <p id="overall-progress-text" class="text-sm font-bold text-amber-400">0 / 3 Menu Selesai</p>
+                </div>
+            </div>
+
+            <!-- Menu Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- 1. BELAJAR -->
+                <div onclick="openMenu('belajar')" class="bg-emerald-950/80 border-2 border-emerald-500 hover:border-amber-400 rounded-3xl p-5 shadow-xl transition-all cursor-pointer transform hover:-translate-y-1 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 bg-emerald-700 text-amber-300 px-3 py-1 rounded-bl-2xl text-[11px] font-bold border-l border-b border-emerald-600">
+                        <i class="fa-solid fa-unlock text-emerald-400"></i> TERBUKA
+                    </div>
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-800 text-amber-300 flex items-center justify-center text-xl mb-3 border border-emerald-600">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-white group-hover:text-amber-300 transition-colors">1. BELAJAR</h3>
+                    <p class="text-xs text-emerald-200 mt-1">6 Slide Materi Mendalam & Aktivitas Pemantik Interaktif</p>
+                </div>
+
+                <!-- 2. BERMAIN -->
+                <div id="card-bermain" onclick="tryOpenMenu('bermain')" class="bg-emerald-950/80 border-2 border-emerald-800/80 opacity-80 rounded-3xl p-5 shadow-xl transition-all cursor-pointer relative overflow-hidden group">
+                    <div id="badge-status-bermain" class="absolute top-0 right-0 bg-emerald-950 text-slate-400 px-3 py-1 rounded-bl-2xl text-[11px] font-bold border-l border-b border-emerald-800">
+                        <i class="fa-solid fa-lock text-amber-400"></i> TERKUNCI
+                    </div>
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-900 text-slate-300 flex items-center justify-center text-xl mb-3 border border-emerald-700">
+                        <i class="fa-solid fa-gamepad"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-white">2. BERMAIN</h3>
+                    <p class="text-xs text-emerald-200 mt-1">10 Tantangan Berstimulus Literasi & Numerasi 100-200 Kata</p>
+                </div>
+
+                <!-- 3. BERLATIH -->
+                <div id="card-berlatih" onclick="tryOpenMenu('berlatih')" class="bg-emerald-950/80 border-2 border-emerald-800/80 opacity-80 rounded-3xl p-5 shadow-xl transition-all cursor-pointer relative overflow-hidden group">
+                    <div id="badge-status-berlatih" class="absolute top-0 right-0 bg-emerald-950 text-slate-400 px-3 py-1 rounded-bl-2xl text-[11px] font-bold border-l border-b border-emerald-800">
+                        <i class="fa-solid fa-lock text-amber-400"></i> TERKUNCI
+                    </div>
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-900 text-slate-300 flex items-center justify-center text-xl mb-3 border border-emerald-700">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-white">3. BERLATIH</h3>
+                    <p class="text-xs text-emerald-200 mt-1">10 Soal Asesmen Berjenjang & Laporan Hasil Belajar PDF</p>
+                </div>
+
+                <!-- 4. REFERENSI -->
+                <div onclick="openMenu('referensi')" class="bg-emerald-950/80 border-2 border-emerald-500 hover:border-amber-400 rounded-3xl p-5 shadow-xl transition-all cursor-pointer transform hover:-translate-y-1 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 bg-amber-500 text-emerald-950 px-3 py-1 rounded-bl-2xl text-[11px] font-bold">
+                        <i class="fa-solid fa-star"></i> PENGAYAAN
+                    </div>
+                    <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-300 flex items-center justify-center text-xl mb-3 border border-amber-400">
+                        <i class="fa-solid fa-bookmark"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-white group-hover:text-amber-300 transition-colors">4. REFERENSI</h3>
+                    <p class="text-xs text-emerald-200 mt-1">Buku Teks, Video Animasi & Teka-Teki Silang (TTS)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. LAYER MENU 1: BELAJAR -->
+        <div id="belajar-page" class="hidden flex-col w-full max-w-4xl mx-auto space-y-4">
+            <div class="flex justify-between items-center bg-emerald-950/80 p-4 rounded-2xl border border-emerald-700 shadow-lg">
+                <button onclick="backToMainMenu()" class="px-4 py-2 rounded-xl bg-emerald-800 hover:bg-emerald-700 text-emerald-200 font-semibold text-xs flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-left"></i> Menu Utama
+                </button>
+                <div class="text-center">
+                    <h2 class="text-base font-bold text-amber-300">Modul Belajar Interaktif</h2>
+                    <p id="belajar-slide-counter" class="text-xs text-emerald-300">Slide 1 dari 6</p>
+                </div>
+                <div class="w-24"></div>
+            </div>
+
+            <!-- Slide Content Card -->
+            <div class="bg-emerald-950/80 border border-emerald-700 rounded-3xl p-6 shadow-2xl space-y-4">
+                <h3 id="belajar-title" class="text-lg font-bold text-amber-300 border-b border-emerald-800 pb-2">Judul Slide</h3>
+                <div id="belajar-content" class="text-xs md:text-sm text-emerald-100 leading-relaxed space-y-3">
+                    <!-- Dynamic Content -->
+                </div>
+
+                <!-- Interactive Activity Section -->
+                <div class="bg-emerald-900/60 p-4 rounded-2xl border border-emerald-700/80 space-y-3 mt-4">
+                    <h4 class="text-xs font-bold text-amber-400 flex items-center gap-2">
+                        <i class="fa-solid fa-puzzle-piece"></i> Tantangan Pemantik Slide
+                    </h4>
+                    <p id="belajar-activity-question" class="text-xs text-emerald-100 font-semibold"></p>
+                    <div id="belajar-activity-options" class="grid grid-cols-1 gap-2"></div>
+                    <div id="belajar-feedback" class="text-xs font-bold mt-2"></div>
+                </div>
+
+                <!-- Navigation Controls -->
+                <div class="flex justify-between items-center pt-3 border-t border-emerald-800">
+                    <button id="belajar-prev-btn" onclick="prevBelajarSlide()" class="px-4 py-2 rounded-xl bg-emerald-900 border border-emerald-700 text-emerald-200 text-xs font-semibold hover:bg-emerald-800">
+                        <i class="fa-solid fa-arrow-left mr-1"></i> Slide Sebelumnya
+                    </button>
+                    <span id="belajar-status-msg" class="text-[11px] text-amber-300 italic hidden md:inline">Selesaikan tantangan di atas untuk lanjut</span>
+                    <button id="belajar-next-btn" onclick="nextBelajarSlide()" disabled class="px-5 py-2.5 rounded-xl bg-emerald-800 opacity-50 text-emerald-400 text-xs font-bold cursor-not-allowed">
+                        Slide Selanjutnya <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. LAYER MENU 2: BERMAIN -->
+        <div id="bermain-page" class="hidden flex-col w-full max-w-4xl mx-auto space-y-4">
+            <div class="flex justify-between items-center bg-emerald-950/80 p-4 rounded-2xl border border-emerald-700 shadow-lg">
+                <button onclick="backToMainMenu()" class="px-4 py-2 rounded-xl bg-emerald-800 hover:bg-emerald-700 text-emerald-200 font-semibold text-xs flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-left"></i> Menu Utama
+                </button>
+                <div class="text-center">
+                    <h2 class="text-base font-bold text-amber-300">Arena Bermain Interaktif</h2>
+                    <p id="bermain-counter" class="text-xs text-emerald-300">Tantangan 1 dari 10</p>
+                </div>
+                <div class="bg-amber-500/20 text-amber-300 border border-amber-400/60 px-3 py-1 rounded-xl text-xs font-extrabold">
+                    Skor: <span id="bermain-score">0</span>
+                </div>
+            </div>
+
+            <div class="bg-emerald-950/80 border border-emerald-700 rounded-3xl p-6 shadow-2xl space-y-4">
+                <div id="bermain-stimulus" class="bg-emerald-900/60 p-4 rounded-2xl border border-emerald-700 text-xs text-emerald-100 leading-relaxed max-h-48 overflow-y-auto">
+                    <!-- Stimulus Teks 100-200 Kata -->
+                </div>
+                <div id="bermain-question" class="text-sm font-bold text-white"></div>
+                <div id="bermain-options" class="grid grid-cols-1 gap-2.5"></div>
+                <div id="bermain-feedback" class="text-xs font-bold min-h-[20px]"></div>
+
+                <div class="pt-2">
+                    <button id="bermain-submit-btn" onclick="submitBermainAnswer()" class="w-full py-3 bg-amber-500 hover:bg-amber-600 text-emerald-950 font-extrabold text-xs rounded-xl shadow-lg transition-all">
+                        Periksa Jawaban
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8. LAYER MENU 3: BERLATIH -->
+        <div id="berlatih-page" class="hidden flex-col w-full max-w-4xl mx-auto space-y-4">
+            <div class="flex justify-between items-center bg-emerald-950/80 p-4 rounded-2xl border border-emerald-700 shadow-lg">
+                <button onclick="backToMainMenu()" class="px-4 py-2 rounded-xl bg-emerald-800 hover:bg-emerald-700 text-emerald-200 font-semibold text-xs flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-left"></i> Menu Utama
+                </button>
+                <div class="text-center">
+                    <h2 class="text-base font-bold text-amber-300">Asesmen Resmi Berjenjang</h2>
+                    <p id="berlatih-counter" class="text-xs text-emerald-300">Soal 1 dari 10</p>
+                </div>
+                <span id="berlatih-level-badge" class="bg-amber-400/20 text-amber-300 border border-amber-400 px-3 py-1 rounded-xl text-xs font-bold">Level 1</span>
+            </div>
+
+            <div class="bg-emerald-950/80 border border-emerald-700 rounded-3xl p-6 shadow-2xl space-y-4">
+                <div id="berlatih-stimulus" class="bg-emerald-900/60 p-4 rounded-2xl border border-emerald-700 text-xs text-emerald-100 leading-relaxed max-h-48 overflow-y-auto">
+                    <!-- Stimulus Asesmen -->
+                </div>
+                <div id="berlatih-question" class="text-sm font-bold text-white"></div>
+                <div id="berlatih-options" class="grid grid-cols-1 gap-2.5"></div>
+
+                <div class="pt-2">
+                    <button onclick="nextBerlatihQuestion()" class="w-full py-3 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-emerald-950 font-extrabold text-xs rounded-xl shadow-lg transition-all">
+                        Simpan & Lanjut Soal Berikutnya <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 9. LAYER MENU 4: REFERENSI -->
+        <div id="referensi-page" class="hidden flex-col w-full max-w-4xl mx-auto space-y-4">
+            <div class="flex justify-between items-center bg-emerald-950/80 p-4 rounded-2xl border border-emerald-700 shadow-lg">
+                <button onclick="backToMainMenu()" class="px-4 py-2 rounded-xl bg-emerald-800 hover:bg-emerald-700 text-emerald-200 font-semibold text-xs flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-left"></i> Menu Utama
+                </button>
+                <div class="text-center">
+                    <h2 class="text-base font-bold text-amber-300">Referensi & Pengayaan</h2>
+                    <p class="text-xs text-emerald-300">Buku Teks, Video Pembelajaran & TTS Interaktif</p>
+                </div>
+                <div class="w-24"></div>
+            </div>
+
+            <!-- Tab Buttons -->
+            <div class="flex flex-wrap gap-2 border-b border-emerald-800 pb-2">
+                <button id="ref-tab-1-btn" onclick="switchRefTab(1)" class="px-4 py-2 rounded-xl bg-amber-500 text-emerald-950 font-bold text-xs shadow-lg transition-all flex items-center gap-1.5">
+                    <i class="fa-solid fa-book"></i> 1. Buku Teks Kemenag
+                </button>
+                <button id="ref-tab-2-btn" onclick="switchRefTab(2)" class="px-4 py-2 rounded-xl bg-emerald-800 hover:bg-emerald-700 text-emerald-100 font-semibold text-xs border border-emerald-700 transition-all flex items-center gap-1.5">
+                    <i class="fa-solid fa-video"></i> 2. Video Animasi Guru
+                </button>
+                <button id="ref-tab-3-btn" onclick="switchRefTab(3)" class="px-4 py-2 rounded-xl bg-emerald-800 hover:bg-emerald-700 text-emerald-100 font-semibold text-xs border border-emerald-700 transition-all flex items-center gap-1.5">
+                    <i class="fa-solid fa-puzzle-piece"></i> 3. Game TTS Interaktif
+                </button>
+            </div>
+
+            <!-- Tab Content 1: Buku Teks -->
+            <div id="ref-tab-1" class="bg-emerald-950/80 border border-emerald-700 rounded-3xl p-6 shadow-2xl space-y-4">
+                <h3 class="text-base font-bold text-amber-300 flex items-center gap-2">
+                    <i class="fa-solid fa-graduation-cap"></i> Ringkasan Buku Teks Akidah Akhlak Kelas V MI (Kemenag RI)
+                </h3>
+                <div class="space-y-3 text-xs text-emerald-100 leading-relaxed">
+                    <p>Buku Teks Utama KMA No. 183 Tahun 2019 Bab I: "Memperkokoh Keimanan Melalui Kalimat Hauqallah". Menguraikan arti pengakuan ketidakmampuan manusia tanpa pertolongan Allah SWT, waktu-waktu disunnahkannya membaca Hauqallah, serta keutamaannya sebagai salah satu harta simpanan surga (Kanzun min kunuzil jannah).</p>
+                    <div class="bg-emerald-900/60 p-4 rounded-xl border border-emerald-700">
+                        <span class="font-bold text-amber-300 block mb-1">Rujukan Dalil Sahih (HR. Bukhari No. 6384):</span>
+                        <p class="italic text-emerald-200">"Ucapkanlah 'Laa haula walaa quwwata illaa billaah', karena sesungguhnya ia adalah salah satu simpanan harta di surga."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content 2: Video Animasi -->
+            <div id="ref-tab-2" class="hidden bg-emerald-950/80 border border-emerald-700 rounded-3xl p-6 shadow-2xl space-y-4">
+                <h3 class="text-base font-bold text-amber-300 flex items-center gap-2">
+                    <i class="fa-solid fa-film"></i> Video Animasi Pembelajaran Karya Rostian Pomalo, S.Pd.I.,Gr
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-emerald-900/60 p-4 rounded-2xl border border-emerald-700 space-y-2">
+                        <div class="aspect-video bg-emerald-950 rounded-xl flex flex-col items-center justify-center border border-emerald-600 text-amber-400 p-4 text-center">
+                            <i class="fa-solid fa-circle-play text-4xl mb-2"></i>
+                            <span class="text-xs font-bold text-white">Video 1: Keajaiban Hauqallah dalam Menghadapi Ujian Lingkungan Pesisir</span>
+                        </div>
+                        <p class="text-[11px] text-emerald-300">Karya: Rostian Pomalo, S.Pd.I.,Gr (MIS Alkhairaat Tilamuta)</p>
+                    </div>
+                    <div class="bg-emerald-900/60 p-4 rounded-2xl border border-emerald-700 space-y-2">
+                        <div class="aspect-video bg-emerald-950 rounded-xl flex flex-col items-center justify-center border border-emerald-600 text-amber-400 p-4 text-center">
+                            <i class="fa-solid fa-circle-play text-4xl mb-2"></i>
+                            <span class="text-xs font-bold text-white">Video 2: Pembiasaan Hauqallah & Aksi Konservasi Pesisir Boalemo</span>
+                        </div>
+                        <p class="text-[11px] text-emerald-300">Karya: Rostian Pomalo, S.Pd.I.,Gr (MIS Alkhairaat Tilamuta)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content 3: Teka-Teki Silang (TTS) -->
+            <div id="ref-tab-3" class="hidden bg-emerald-950/80 border border-emerald-700 rounded-3xl p-6 shadow-2xl space-y-4">
+                <h3 class="text-base font-bold text-amber-300 flex items-center gap-2">
+                    <i class="fa-solid fa-gamepad"></i> Game Teka-Teki Silang (TTS) Hauqallah
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <div id="tts-board" class="tts-grid"></div>
+                        <button onclick="checkTTSAnswers()" class="w-full mt-4 py-2.5 bg-amber-500 hover:bg-amber-600 text-emerald-950 font-bold text-xs rounded-xl shadow-md">
+                            Periksa Jawaban TTS
+                        </button>
+                        <div id="tts-feedback" class="text-xs font-bold mt-2"></div>
+                    </div>
+                    <div class="bg-emerald-900/60 p-4 rounded-2xl border border-emerald-700 space-y-3 text-xs text-emerald-100">
+                        <h4 class="font-bold text-amber-400">Petunjuk Kata:</h4>
+                        <div>
+                            <span class="font-bold text-amber-300">Mendatar:</span>
+                            <ul class="list-disc pl-4 space-y-1 mt-1 text-[11px]">
+                                <li>1. Simpanan harta surga (KANZUN)</li>
+                                <li>3. Kecamatan tempat MIS Alkhairaat berada (TILAMUTA)</li>
+                                <li>5. Sifat sombong yang dikikis Hauqallah (TAKABUR)</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <span class="font-bold text-amber-300">Menurun:</span>
+                            <ul class="list-disc pl-4 space-y-1 mt-1 text-[11px]">
+                                <li>2. Kalimat pasrah diri kepada Allah (HAUQALLAH)</li>
+                                <li>4. Sifat Allah Yang Maha Tinggi (AL-ALIYY)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 10. LAPORAN HASIL BELAJAR PDF OTOMATIS -->
+        <div id="report-page" class="hidden flex-col w-full max-w-4xl mx-auto space-y-4">
+            <div id="printable-report" class="bg-slate-900 text-slate-100 border-2 border-emerald-600 rounded-3xl p-6 md:p-8 shadow-2xl space-y-6">
+                <!-- Header Kop -->
+                <div class="border-b-2 border-emerald-500 pb-4 flex flex-wrap justify-between items-center gap-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 rounded-xl bg-amber-500/20 border border-amber-400 p-1 flex items-center justify-center">
+                            <img src="https://iili.io/nvQaSgS.png" alt="Logo PDF" class="w-full h-full object-contain">
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Laporan Hasil Belajar Siswa</h3>
+                            <p class="text-xs text-emerald-400">Media Pembelajaran Interaktif • Kalimat Tayyibah Hauqallah</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-xs text-slate-300 font-semibold">MIS Alkhairaat Tilamuta</p>
+                        <p class="text-[11px] text-slate-400">Pengembang: Rostian Pomalo, S.Pd.I., Gr</p>
+                    </div>
+                </div>
+
+                <!-- Student Details -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-slate-800/80 p-4 rounded-2xl border border-slate-700 text-sm">
+                    <div>
+                        <p class="text-xs text-slate-400">Nama Lengkap:</p>
+                        <p id="report-student-name" class="font-bold text-amber-300 text-base">--</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400">Kelas / Fase:</p>
+                        <p id="report-student-class" class="font-bold text-white text-base">--</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400">Tanggal Pengerjaan:</p>
+                        <p id="report-date" class="font-bold text-white text-base">--</p>
+                    </div>
+                </div>
+
+                <!-- Summary Scores -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 border border-emerald-500 flex items-center justify-center text-xl font-bold">
+                            <i class="fa-solid fa-gamepad"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-400 uppercase">Skor Bermain Interaktif</p>
+                            <p id="report-bermain-score" class="text-2xl font-extrabold text-white">0 / 100</p>
+                        </div>
+                    </div>
+                    <div class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500 flex items-center justify-center text-xl font-bold">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-400 uppercase">Nilai Asesmen Berlatih</p>
+                            <p id="report-berlatih-score" class="text-2xl font-extrabold text-amber-400">0 <span class="text-xs text-slate-400">/ 100</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Level Mastery -->
+                <div class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700 space-y-3">
+                    <h4 class="font-bold text-amber-300 text-sm flex items-center gap-2"><i class="fa-solid fa-chart-bar"></i> Analisis Penguasaan Level Asesmen</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+                        <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-700">
+                            <p class="text-slate-400">Level 1 (Dasar):</p>
+                            <p id="report-level-1" class="font-bold text-white text-sm mt-1">0 / 3 Soal Benar</p>
+                        </div>
+                        <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-700">
+                            <p class="text-slate-400">Level 2 (Penerapan):</p>
+                            <p id="report-level-2" class="font-bold text-white text-sm mt-1">0 / 4 Soal Benar</p>
+                        </div>
+                        <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-700">
+                            <p class="text-slate-400">Level 3 (HOTS):</p>
+                            <p id="report-level-3" class="font-bold text-white text-sm mt-1">0 / 3 Soal Benar</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Teacher Notes -->
+                <div class="bg-emerald-950/60 p-5 rounded-2xl border border-emerald-700/80 space-y-2">
+                    <h4 class="font-bold text-amber-400 text-sm flex items-center gap-2"><i class="fa-solid fa-heart"></i> Catatan Kurikulum Berbasis Cinta & Rekomendasi Guru</h4>
+                    <p id="report-teacher-notes" class="text-xs text-emerald-100 leading-relaxed">
+                        Alhamdulillah, Ananda telah menunjukkan semangat luar biasa dalam mempelajari kalimat Tayyibah Hauqallah serta mengaitkannya dengan pelestarian lingkungan di Tilamuta. Teruslah tingkatkan amalan membaca Hauqallah dalam setiap aktivitas harian!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap justify-between items-center gap-4 pt-2">
+                <button onclick="backToMainMenu()" class="px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs flex items-center gap-2">
+                    <i class="fa-solid fa-house"></i> Kembali ke Menu Utama
+                </button>
+                <button onclick="downloadPDFReport()" class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-extrabold text-sm shadow-xl transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-file-pdf"></i> Unduh / Cetak Laporan PDF
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- EDUCATIONAL MODAL POPUP -->
+    <div id="edu-modal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-gradient-to-b from-emerald-900 to-teal-950 border-2 border-amber-400/60 rounded-3xl max-w-sm w-full p-6 text-center shadow-2xl animate-float">
+            <div id="edu-modal-icon" class="w-16 h-16 rounded-full bg-amber-400/20 flex items-center justify-center border-2 border-amber-400 mx-auto mb-4 text-amber-300 text-3xl">
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            <h3 id="edu-modal-title" class="text-xl font-extrabold text-white mb-2">Menu Masih Terkunci!</h3>
+            <p id="edu-modal-desc" class="text-xs text-emerald-200 leading-relaxed mb-6">Selesaikan tahap sebelumnya terlebih dahulu sebelum membuka menu ini.</p>
+            <button onclick="closeModal('edu-modal')" class="w-full py-3 bg-amber-500 hover:bg-amber-600 text-emerald-950 font-bold rounded-xl shadow-lg transition-all text-sm">
+                Mengerti, Mari Lanjutkan
+            </button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT APPLICATION LOGIC -->
+    <script>
+        // =========================================================================
+        // DEKLARASI TAUTAN WEB APP GOOGLE APPS SCRIPT (GAS)
+        // Ganti string di bawah ini dengan URL Web App GAS Anda setelah men-deploy.
+        // =========================================================================
+        const GAS_URL = "https://script.google.com/macros/s/AKfycbxCrv1GWWQloPp73TL7avR0U4l092bfMsIwSgFO4KaQB103Ili4BlZQaabm61YBHVCC/exec";
+
+        // --- DATA CONTENT BELAJAR (6 SLIDE) ---
+        const belajarSlides = [
+            {
+                title: "1. Pengertian & Lafal Kalimat Tayyibah Hauqallah",
+                content: `
+                    <p><strong>Kalimat Tayyibah</strong> berarti perkataan yang baik, mulia, dan bernilai pahala di sisi Allah SWT. Salah satu kalimat tayyibah yang sangat mulia adalah <strong>Hauqallah</strong>.</p>
+                    <div class="bg-emerald-900/60 p-4 rounded-2xl border border-emerald-700 text-center my-3">
+                        <p class="arabic-text text-2xl text-amber-300 font-bold">لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ الْعَلِيِّ الْعَظِيمِ</p>
+                        <p class="text-xs italic text-emerald-200 mt-2">"Laa haula walaa quwwata illaa billaahil 'aliyyil 'azhiim"</p>
+                    </div>
+                    <p><strong>Artinya:</strong> "Tiada daya dan upaya serta kekuatan melainkan dengan pertolongan Allah Yang Maha Tinggi lagi Maha Agung."</p>
+                `,
+                activity: {
+                    question: "Manakah tulisan lafal Hauqallah yang tepat?",
+                    options: ["Laa haula walaa quwwata illaa billaah", "Subhanallah walhamdulillah", "Astaghfirullahal 'azhiim"],
+                    correct: 0
+                }
+            },
+            {
+                title: "2. Makna Mendalam & Pengakuan Ketidakmampuan",
+                content: `
+                    <p>Hauqallah mengajarkan kita sikap <strong>tawadhu' (rendah hati)</strong> dan kepasrahan penuh kepada Allah. Manusia tidak memiliki daya untuk menghindari kemaksiatan atau kekuatan untuk melakukan kebaikan tanpa pertolongan Allah SWT.</p>
+                    <p class="bg-emerald-900/50 p-3 rounded-xl border border-emerald-700/60 text-emerald-200">
+                        <i class="fa-solid fa-heart text-amber-400 mr-1.5"></i> <strong>Pesan KBC Kemenag RI:</strong> Kesadaran bahwa kita lemah membuat kita senantiasa mengasihi sesama dan tidak bersikap sombong atas nikmat-Nya.
+                    </p>
+                `,
+                activity: {
+                    question: "Sikap utama yang ditanamkan melalui kalimat Hauqallah adalah...",
+                    options: ["Sombong dan merasa hebat", "Tawadhu' (rendah hati) dan berserah diri", "Iri hati terhadap teman"],
+                    correct: 1
+                }
+            },
+            {
+                title: "3. Waktu-Waktu Utama Pengucapan Hauqallah",
+                content: `
+                    <p>Kalimat Hauqallah disunnahkan untuk diucapkan pada saat-saat berikut:</p>
+                    <ul class="list-disc pl-5 space-y-1.5">
+                        <li>Saat mendengar muazin mengucapkan <em>"Hayya 'alash shalaah"</em> dan <em>"Hayya 'alal falaah"</em>.</li>
+                        <li>Ketika menghadapi kesulitan, beban berat, atau ujian hidup.</li>
+                        <li>Saat keluar rumah untuk memulai aktivitas harian.</li>
+                        <li>Sebagai zikir harian sesudah salat fardu.</li>
+                    </ul>
+                `,
+                activity: {
+                    question: "Kapan kita disunnahkan membalas ucapan muazin dengan kalimat Hauqallah?",
+                    options: ["Saat muazin membaca takbir", "Saat mendengar Hayya 'alash shalaah", "Saat muazin membaca salam"],
+                    correct: 1
+                }
+            },
+            {
+                title: "4. Keutamaan Hauqallah: Simpanan Harta Surga",
+                content: `
+                    <p>Rasulullah SAW bersabda dalam hadis sahih HR. Bukhari No. 6384 bahwa Hauqallah adalah <strong>Kanzun min kunuzil jannah</strong> (salah satu simpanan kekayaan di surga).</p>
+                    <div class="bg-emerald-900/60 p-3 rounded-xl border border-emerald-700 text-xs italic text-emerald-200">
+                        "Wahai 'Abdullah bin Qais, maukah aku tunjukkan kepadamu salah satu simpanan pahala di surga? Yaitu: Laa haula walaa quwwata illaa billaah."
+                    </div>
+                `,
+                activity: {
+                    question: "Menurut hadis Nabi SAW, kalimat Hauqallah merupakan...",
+                    options: ["Harta kekayaan di dunia", "Simpanan pahala/harta di surga", "Hiasan dinding rumah"],
+                    correct: 1
+                }
+            },
+            {
+                title: "5. Integrasi Lingkungan Pesisir Tilamuta & Boalemo",
+                content: `
+                    <p>Masyarakat pesisir <strong>Kecamatan Tilamuta, Kabupaten Boalemo</strong> menghadapi tantangan cuaca laut dan pemeliharaan ekosistem Teluk Tomini. Mengucapkan Hauqallah memberikan ketenangan jiwa sekaligus memicu ikhtiar nyata menjaga kelestarian alam.</p>
+                    <p class="bg-emerald-900/50 p-3 rounded-xl border border-emerald-700/60">
+                        <i class="fa-solid fa-water text-amber-400 mr-1.5"></i> <strong>Cinta Alam:</strong> Kepasrahan diri diiringi kerja keras menjaga pesisir dari sampah dan abrasi adalah bentuk amalan Hauqallah yang nyata.
+                    </p>
+                `,
+                activity: {
+                    question: "Wujud kepasrahan dan keimanan masyarakat pesisir Tilamuta setelah membaca Hauqallah adalah...",
+                    options: ["Membiarkan sampah melimpah di pesisir", "Berikhtiar aktif menjaga kelestarian alam pesisir", "Menghentikan semua aktivitas penangkapan ikan"],
+                    correct: 1
+                }
+            },
+            {
+                title: "6. Hikmah & Pembiasaan Karakter Muslim",
+                content: `
+                    <p>Hikmah membaca kalimat Hauqallah dalam kehidupan harian:</p>
+                    <ol class="list-decimal pl-5 space-y-1.5">
+                        <li>Mengikis sifat takabur dan kesombongan diri.</li>
+                        <li>Memberikan kekuatan batin saat menghadapi tantangan berat.</li>
+                        <li>Mendapatkan pahala besar dan ridha Allah SWT.</li>
+                    </ol>
+                `,
+                activity: {
+                    question: "Berikut ini yang BUKAN merupakan hikmah mengamalkan Hauqallah adalah...",
+                    options: ["Mengikis sifat sombong", "Mendapat pahala surga", "Membuat diri merasa lebih hebat dari orang lain"],
+                    correct: 2
+                }
+            }
+        ];
+
+        let belajarSlideStatus = [false, false, false, false, false, false];
+
+        // --- DATA BERMAIN (10 TANTANGAN) ---
+        const bermainChallenges = [
+            {
+                stimulus: "Nelayan di pesisir Desa Pentadu Timur, Kecamatan Tilamuta, hendak berlayar di perairan Teluk Tomini. Sebelum melaut, nelayan mengamati gelombang angin dan mengucapkan kalimat Hauqallah sebagai wujud penyerahan diri kepada kekuasaan Allah SWT.",
+                question: "Tindakan nelayan Tilamuta tersebut mencerminkan makna Hauqallah yaitu...",
+                options: ["Kepasrahan tanpa ikhtiar", "Penyerahan diri setelah melakukan persiapan dan ikhtiar", "Sikap ragu-ragu dalam bekerja"],
+                correct: 1
+            },
+            {
+                stimulus: "Ahmad, siswa MIS Alkhairaat Tilamuta, mendengarkan azan Ashar berkumandang. Ketika muazin mengumandangkan 'Hayya 'alal falaah', Ahmad merespons dengan kalimat tayyibah.",
+                question: "Lafal ucapan yang dibaca Ahmad sesuai tuntunan Rasulullah SAW adalah...",
+                options: ["Subhanallah", "Laa haula walaa quwwata illaa billaah", "Alhamdulillah"],
+                correct: 1
+            },
+            {
+                stimulus: "Siswa kelas V MI melakukan kegiatan kerja bakti membersihkan kawasan pesisir Boalemo. Mereka merasa lelah namun tetap bersemangat seraya bertasbih dan membaca Hauqallah.",
+                question: "Keutamaan membaca Hauqallah saat merasa lelah bekerja bakti adalah...",
+                options: ["Mendapatkan kekuatan batin dan dorongan semangat dari Allah", "Menghilangkan beban pekerjaan secara instan tanpa bekerja", "Mendapat pujian dari teman sekelas"],
+                correct: 0
+            },
+            {
+                stimulus: "Di kawasan Danau Limboto, para petani enceng gondok bekerja keras memanfaatkan tanaman untuk kerajinan. Mereka memohon petunjuk Allah agar usahanya berkah.",
+                question: "Sikap pasrah dan memohon petunjuk Allah melalui Hauqallah mengajarkan kita untuk...",
+                options: ["Sombong atas hasil karya sendiri", "Tawadhu' dan bersyukur atas rezeki Allah", "Berhenti berkreasi"],
+                correct: 1
+            },
+            {
+                stimulus: "Dalam hadis sahih diriwayatkan bahwa Hauqallah adalah 'Kanzun min kunuzil jannah'. Istilah ini mengandung arti penting bagi seorang muslim.",
+                question: "Arti dari istilah 'Kanzun min kunuzil jannah' adalah...",
+                options: ["Kunci pintu masjid", "Salah satu simpanan kekayaan/pahala di surga", "Minuman manis di surga"],
+                correct: 1
+            },
+            {
+                stimulus: "Aisyah mengalami kesulitan saat menyelesaikan latihan soal matematika. Sebelum menyerah, ia menenangkan diri dengan membaca kalimat Hauqallah dan berdoa.",
+                question: "Manfaat membaca Hauqallah saat menghadapi kesulitan belajar adalah...",
+                options: ["Membuat jawaban soal terisi otomatis", "Memberikan ketenangan pikiran dan kelapangan dada", "Menghapus tugas sekolah"],
+                correct: 1
+            },
+            {
+                stimulus: "Masyarakat Tilamuta membiasakan membaca zikir Hauqallah ketika hendak keluar rumah menuju tempat kerja atau madrasah.",
+                question: "Doa keluar rumah yang memuat kalimat Hauqallah memberikan perlindungan berupa...",
+                options: ["Perlindungan dan bimbingan Allah SWT selama di perjalanan", "Bebas dari aturan lalu lintas", "Pasti mendapatkan uang di jalan"],
+                correct: 0
+            },
+            {
+                stimulus: "KBC (Kurikulum Berbasis Cinta) menekankan bahwa setiap ungkapan zikir harus memancar dalam bentuk cinta kasih kepada alam dan sesama.",
+                question: "Bentuk nyata amalan Hauqallah dalam Kurikulum Berbasis Cinta adalah...",
+                options: ["Merusak tanaman di lingkungan sekolah", "Menjaga kebersihan Teluk Tomini dan mengasihi teman", "Mengabaikan kebersihan kelas"],
+                correct: 1
+            },
+            {
+                stimulus: "Seseorang yang senantiasa mengumandangkan Hauqallah terhindar dari sifat 'ujub (banggakan diri) dan takabur (sombong).",
+                question: "Mengapa Hauqallah dapat mengikis sifat sombong?",
+                options: ["Karena menegaskan bahwa seluruh kekuatan hanya milik Allah", "Karena lafalnya panjang dan sulit", "Karena membuat orang takut berbicara"],
+                correct: 0
+            },
+            {
+                stimulus: "Rostian Pomalo, S.Pd.I.,Gr mengajak siswa MIS Alkhairaat Tilamuta untuk menghafal dan mengamalkan Hauqallah setiap hari.",
+                question: "Sikap terbaik setelah mempelajari materi Hauqallah adalah...",
+                options: ["Menghafal tanpa mengamalkan", "Membiasakan pengucapannya dalam zikir dan kehidupan sehari-hari", "Lupa setelah ujian"],
+                correct: 1
+            }
+        ];
+
+        // --- DATA BERLATIH (10 SOAL ASESMEN) ---
+        const berlatihQuestions = [
+            {
+                level: 1, weight: 8,
+                stimulus: "Kalimat tayyibah Hauqallah merupakan salah satu zikir utama dalam ajaran Islam yang diajarkan oleh Rasulullah SAW kepada para sahabat.",
+                question: "Lafal kalimat Hauqallah secara lengkap adalah...",
+                options: ["Laa ilaaha illallaah wahdahu laa syariikalah", "Laa haula walaa quwwata illaa billaahil 'aliyyil 'azhiim", "Subhanallah walhamdulillah walaa ilaaha illallaah"],
+                correct: 1
+            },
+            {
+                level: 1, weight: 8,
+                stimulus: "Setiap kalimat tayyibah memiliki arti dan makna khusus yang mengagungkan kebesaran Allah SWT.",
+                question: "Arti dari lafal 'Laa haula walaa quwwata illaa billaah' adalah...",
+                options: ["Maha Suci Allah dan segala puji bagi-Nya", "Tiada daya dan upaya serta kekuatan melainkan dengan pertolongan Allah", "Allah Maha Besar lagi Maha Penyayang"],
+                correct: 1
+            },
+            {
+                level: 1, weight: 8,
+                stimulus: "Rasulullah SAW menjelaskan keutamaan Hauqallah dalam berbagai hadis sahih.",
+                question: "Keutamaan kalimat Hauqallah sebagaimana disebutkan dalam hadis riwayat Bukhari adalah sebagai...",
+                options: ["Penebus dosa kecil", "Simpanan kekayaan (kanzun) di surga", "Penerang kegelapan malam"],
+                correct: 1
+            },
+            {
+                level: 2, weight: 10,
+                stimulus: "Saat azan berkumandang di Tilamuta, muazin sampai pada lafal 'Hayya 'alash shalaah'. Siswa diajarkan untuk merespons lafal tersebut.",
+                question: "Mengapa kita disunnahkan merespons panggilan 'Hayya 'alash shalaah' dengan membaca Hauqallah?",
+                options: ["Karena kita memohon kekuatan dari Allah agar mampu memenuhi panggilan salat", "Karena kalimat tersebut adalah pengganti takbir", "Karena ucapan tersebut merupakan tradisi lokal"],
+                correct: 0
+            },
+            {
+                level: 2, weight: 10,
+                stimulus: "Seorang petani di Boalemo mengalami gagal panen akibat cuaca ekstrem. Namun, ia tidak putus asa dan mengucap Hauqallah seraya kembali mengolah lahannya.",
+                question: "Pelajaran moral yang ditunjukkan petani Boalemo tersebut adalah...",
+                options: ["Pasrah tanpa berusaha", "Ketabahan jiwa dan optimisme berbasis keimanan kepada Allah", "Keputusasaan atas cobaan hidup"],
+                correct: 1
+            },
+            {
+                level: 2, weight: 10,
+                stimulus: "Aisyah hendak berangkat menuju MIS Alkhairaat Tilamuta. Di pintu rumah, ia membaca doa keluar rumah yang memuat lafal Hauqallah.",
+                question: "Fungsi utama membaca Hauqallah saat keluar rumah adalah...",
+                options: ["Mendapatkan uang saku tambahan", "Memohon perlindungan dan petunjuk Allah di perjalanan", "Agar tidak terlambat masuk kelas"],
+                correct: 1
+            },
+            {
+                level: 2, weight: 10,
+                stimulus: "Dalam Kurikulum Berbasis Cinta (KBC) Kemenag RI, kesadaran keagamaan harus berbuah pada sikap kasih sayang terhadap sesama makhluk.",
+                question: "Korelasi antara zikir Hauqallah dengan kepedulian lingkungan pesisir Tilamuta adalah...",
+                options: ["Zikir Hauqallah membuat orang malas bekerja", "Zikir Hauqallah mendorong kepasrahan yang diwujudkan melalui aksi nyata menjaga alam ciptaan-Nya", "Hauqallah hanya dibaca saat di dalam masjid"],
+                correct: 1
+            },
+            {
+                level: 3, weight: 12,
+                stimulus: "Seorang siswa merasa sangat cerdas dan meremehkan kemampuan temannya saat kerja kelompok. Setelah mendengar penjelasan guru tentang makna Hauqallah, ia menyadari kesalahannya.",
+                question: "Bagaimana kalimat Hauqallah dapat mengubah sikap siswa tersebut secara mendasar?",
+                options: ["Menyadarkan bahwa kecerdasan adalah karunia Allah dan tanpa pertolongan-Nya manusia tidak punya daya", "Membuat siswa berhenti belajar matematika", "Meminta teman mengerjakan seluruh tugas"],
+                correct: 0
+            },
+            {
+                level: 3, weight: 12,
+                stimulus: "Kawasan pesisir Teluk Tomini mengalami ancaman penumpukan sampah plastik. Kelompok remaja madrasah menggalang gerakan 'Hauqallah Peduli Pesisir' untuk pembersihan pantai.",
+                question: "Mengapa gerakan pembersihan pantai tersebut dapat dikategorikan sebagai pengamalan Hauqallah tingkat tinggi (HOTS)?",
+                options: ["Karena menghubungkan keimanan ketauhidan dengan aksi nyata pemecahan masalah lingkungan lokal", "Karena kegiatan tersebut menggunakan seragam baru", "Karena dilakukan pada hari libur sekolah"],
+                correct: 0
+            },
+            {
+                level: 3, weight: 12,
+                stimulus: "Analisislah pernyataan berikut: 'Hauqallah adalah gabungan antara pengakuan kelemahan diri sekaligus sumber kekuatan terbesar seorang muslim.'",
+                question: "Analisis yang paling tepat untuk menjelaskan pernyataan di atas adalah...",
+                options: ["Manusia mengakui dirinya tidak berdaya mandiri, namun mendapat kekuatan luar biasa dari Allah SWT", "Manusia menjadi lemah dan menyerah pada keadaan", "Kekuatan manusia diperoleh dari latihan fisik belaka"],
+                correct: 0
+            }
+        ];
+
+        // --- GLOBAL APP STATE ---
+        let studentData = { name: "", grade: "" };
+        let progressState = { belajarCompleted: false, bermainCompleted: false, berlatihCompleted: false };
+        let currentGuideStep = 1;
+        let currentBelajarSlide = 0;
+        let currentBermainIdx = 0;
+        let bermainScore = 0;
+        let currentBerlatihIdx = 0;
+        let berlatihScore = 0;
+        let berlatihAnswers = [];
+        let levelMastery = { level1: 0, level2: 0, level3: 0 };
+        let bgmPlaying = true;
+        let audioCtx = null;
+
+        // --- AUDIO SYNTHESIZER ---
+        function getAudioContext() {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            return audioCtx;
+        }
+
+        function playClickSFX() {
+            try {
+                const ctx = getAudioContext();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(600, ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(800, ctx.currentTime + 0.08);
+                gain.gain.setValueAtTime(0.15, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.08);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + 0.08);
+            } catch(e) {}
+        }
+
+        function playCorrectSFX() {
+            try {
+                const ctx = getAudioContext();
+                const notes = [523.25, 659.25, 783.99, 1046.50];
+                notes.forEach((freq, idx) => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.08);
+                    gain.gain.setValueAtTime(0.12, ctx.currentTime + idx * 0.08);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + idx * 0.08 + 0.2);
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.start(ctx.currentTime + idx * 0.08);
+                    osc.stop(ctx.currentTime + idx * 0.08 + 0.2);
+                });
+            } catch(e) {}
+        }
+
+        function playWrongSFX() {
+            try {
+                const ctx = getAudioContext();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(150, ctx.currentTime);
+                osc.frequency.linearRampToValueAtTime(100, ctx.currentTime + 0.2);
+                gain.gain.setValueAtTime(0.15, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.2);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + 0.2);
+            } catch(e) {}
+        }
+
+        let bgmTimer = null;
+        function startBGM() {
+            if (!bgmPlaying) return;
+            try {
+                const ctx = getAudioContext();
+                const melody = [261.63, 329.63, 392.00, 329.63, 349.23, 440.00, 392.00, 329.63];
+                let noteIdx = 0;
+                bgmTimer = setInterval(() => {
+                    if(!bgmPlaying) return;
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(melody[noteIdx], ctx.currentTime);
+                    gain.gain.setValueAtTime(0.02, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.6);
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.6);
+                    noteIdx = (noteIdx + 1) % melody.length;
+                }, 800);
+            } catch(e) {}
+        }
+
+        function toggleBGM() {
+            playClickSFX();
+            bgmPlaying = !bgmPlaying;
+            const btnText = document.getElementById('bgm-text');
+            const btnIcon = document.getElementById('bgm-icon');
+            if (bgmPlaying) {
+                btnText.innerText = "Musik ON";
+                btnIcon.className = "fa-solid fa-music";
+                startBGM();
+            } else {
+                btnText.innerText = "Musik OFF";
+                btnIcon.className = "fa-solid fa-volume-xmark";
+                if(bgmTimer) clearInterval(bgmTimer);
+            }
+        }
+
+        // --- APP INITIALIZATION ---
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const splash = document.getElementById('splash-screen');
+                if(splash) {
+                    splash.style.opacity = '0';
+                    setTimeout(() => splash.style.display = 'none', 700);
+                }
+            }, 1200);
+        });
+
+        function hideAllPages() {
+            const pages = ['cover-page', 'identity-page', 'guide-page', 'main-menu-page', 'belajar-page', 'bermain-page', 'berlatih-page', 'referensi-page', 'report-page'];
+            pages.forEach(id => {
+                const el = document.getElementById(id);
+                if(el) {
+                    el.classList.add('hidden');
+                    el.classList.remove('flex');
+                }
+            });
+        }
+
+        function showPage(pageId) {
+            hideAllPages();
+            const page = document.getElementById(pageId);
+            if(page) {
+                page.classList.remove('hidden');
+                page.classList.add('flex');
+            }
+        }
+
+        function backToMainMenu() {
+            playClickSFX();
+            showPage('main-menu-page');
+            updateMainMenuUI();
+        }
+
+        function openModal(modalId) {
+            playClickSFX();
+            const modal = document.getElementById(modalId);
+            if(modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            }
+        }
+
+        function closeModal(modalId) {
+            playClickSFX();
+            const modal = document.getElementById(modalId);
+            if(modal) {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+            }
+        }
+
+        function showEduModal(title, desc) {
+            document.getElementById('edu-modal-title').innerText = title;
+            document.getElementById('edu-modal-desc').innerText = desc;
+            openModal('edu-modal');
+        }
+
+        function startApp() {
+            playClickSFX();
+            showPage('identity-page');
+        }
+
+        function submitIdentity() {
+            playClickSFX();
+            const nameInput = document.getElementById('student-name-input').value.trim();
+            const classInput = document.getElementById('student-class-input').value.trim();
+
+            if(!nameInput) {
+                showEduModal("Nama Wajib Diisi", "Mohon masukkan nama lengkap Ananda!");
+                return;
+            }
+            studentData.name = nameInput;
+            studentData.grade = classInput || "Kelas V MI";
+
+            document.getElementById('user-profile-name').innerText = studentData.name;
+            document.getElementById('user-profile-class').innerText = `Kelas: ${studentData.grade}`;
+
+            currentGuideStep = 1;
+            renderGuideStep();
+            showPage('guide-page');
+        }
+
+        function renderGuideStep() {
+            const steps = [
+                { title: "Selamat Datang!", desc: "Di media pembelajaran interaktif Kalimat Tayyibah Hauqallah karya Rostian Pomalo, S.Pd.I.,Gr. Mari pelajari materi sains, agama, dan lingkungan pesisir Tilamuta!" },
+                { title: "Alur Pembelajaran", desc: "Selesaikan modul BELAJAR untuk membuka BERMAIN. Tuntaskan tantangan BERMAIN untuk membuka asesmen BERLATIH!" },
+                { title: "Pusat Referensi", desc: "Gunakan menu REFERENSI untuk membaca Ringkasan Buku Akidah Akhlak, menonton Video Animasi Guru, dan bermain Teka-Teki Silang (TTS)." }
+            ];
+            document.getElementById('guide-step-title').innerText = steps[currentGuideStep-1].title;
+            document.getElementById('guide-step-desc').innerText = steps[currentGuideStep-1].desc;
+            document.getElementById('guide-step-counter').innerText = `${currentGuideStep} dari 3`;
+        }
+
+        function nextGuideStep() {
+            playClickSFX();
+            if(currentGuideStep < 3) {
+                currentGuideStep++;
+                renderGuideStep();
+            } else {
+                showPage('main-menu-page');
+                updateMainMenuUI();
+            }
+        }
+
+        function prevGuideStep() {
+            playClickSFX();
+            if(currentGuideStep > 1) {
+                currentGuideStep--;
+                renderGuideStep();
+            }
+        }
+
+        function updateMainMenuUI() {
+            let count = 0;
+            if(progressState.belajarCompleted) count++;
+            if(progressState.bermainCompleted) count++;
+            if(progressState.berlatihCompleted) count++;
+            document.getElementById('overall-progress-text').innerText = `${count} / 3 Menu Selesai`;
+
+            if(progressState.belajarCompleted) {
+                const card = document.getElementById('card-bermain');
+                card.classList.remove('opacity-80', 'border-emerald-800/80');
+                card.classList.add('border-emerald-500', 'hover:border-amber-400');
+                document.getElementById('badge-status-bermain').className = "absolute top-0 right-0 bg-emerald-700 text-amber-300 px-3 py-1 rounded-bl-2xl text-[11px] font-bold";
+                document.getElementById('badge-status-bermain').innerHTML = `<i class="fa-solid fa-unlock text-emerald-400"></i> TERBUKA`;
+            }
+
+            if(progressState.bermainCompleted) {
+                const card = document.getElementById('card-berlatih');
+                card.classList.remove('opacity-80', 'border-emerald-800/80');
+                card.classList.add('border-emerald-500', 'hover:border-amber-400');
+                document.getElementById('badge-status-berlatih').className = "absolute top-0 right-0 bg-emerald-700 text-amber-300 px-3 py-1 rounded-bl-2xl text-[11px] font-bold";
+                document.getElementById('badge-status-berlatih').innerHTML = `<i class="fa-solid fa-unlock text-emerald-400"></i> TERBUKA`;
+            }
+        }
+
+        function openMenu(menu) {
+            playClickSFX();
+            if(menu === 'belajar') {
+                currentBelajarSlide = 0;
+                renderBelajarSlide();
+                showPage('belajar-page');
+            } else if(menu === 'referensi') {
+                showPage('referensi-page');
+            }
+        }
+
+        function tryOpenMenu(menu) {
+            playClickSFX();
+            if(menu === 'bermain') {
+                if(!progressState.belajarCompleted) {
+                    playWrongSFX();
+                    showEduModal("Menu Terkunci", "Selesaikan Menu BELAJAR terlebih dahulu untuk membuka tantangan Bermain!");
+                } else {
+                    currentBermainIdx = 0;
+                    bermainScore = 0;
+                    document.getElementById('bermain-score').innerText = "0";
+                    renderBermainChallenge();
+                    showPage('bermain-page');
+                }
+            } else if(menu === 'berlatih') {
+                if(!progressState.bermainCompleted) {
+                    playWrongSFX();
+                    showEduModal("Menu Terkunci", "Selesaikan Menu BERMAIN terlebih dahulu untuk membuka Asesmen Berlatih!");
+                } else {
+                    currentBerlatihIdx = 0;
+                    berlatihScore = 0;
+                    berlatihAnswers = [];
+                    levelMastery = { level1: 0, level2: 0, level3: 0 };
+                    renderBerlatihQuestion();
+                    showPage('berlatih-page');
+                }
+            }
+        }
+
+        // --- BELAJAR LOGIC ---
+        function renderBelajarSlide() {
+            const slide = belajarSlides[currentBelajarSlide];
+            document.getElementById('belajar-slide-counter').innerText = `Slide ${currentBelajarSlide + 1} dari 6`;
+            document.getElementById('belajar-title').innerText = slide.title;
+            document.getElementById('belajar-content').innerHTML = slide.content;
+
+            document.getElementById('belajar-activity-question').innerText = slide.activity.question;
+            const optContainer = document.getElementById('belajar-activity-options');
+            optContainer.innerHTML = '';
+            slide.activity.options.forEach((opt, idx) => {
+                optContainer.innerHTML += `
+                    <button onclick="checkBelajarActivity(${idx})" class="w-full text-left p-3 rounded-xl bg-emerald-950/80 hover:bg-emerald-800/80 border border-emerald-700/80 text-xs text-white flex justify-between items-center transition-all">
+                        <span>${String.fromCharCode(65 + idx)}. ${opt}</span>
+                        <span id="belajar-opt-icon-${idx}"><i class="fa-regular fa-circle text-emerald-500"></i></span>
+                    </button>
+                `;
+            });
+            document.getElementById('belajar-feedback').innerHTML = '';
+
+            const nextBtn = document.getElementById('belajar-next-btn');
+            if(belajarSlideStatus[currentBelajarSlide]) {
+                nextBtn.disabled = false;
+                nextBtn.className = "px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-emerald-950 text-xs font-bold shadow-md";
+            } else {
+                nextBtn.disabled = true;
+                nextBtn.className = "px-5 py-2.5 rounded-xl bg-emerald-800 opacity-50 text-emerald-400 text-xs font-bold cursor-not-allowed";
+            }
+        }
+
+        function checkBelajarActivity(selectedIdx) {
+            playClickSFX();
+            const correctIdx = belajarSlides[currentBelajarSlide].activity.correct;
+            const feedbackEl = document.getElementById('belajar-feedback');
+            if(selectedIdx === correctIdx) {
+                playCorrectSFX();
+                feedbackEl.innerHTML = `<span class="text-emerald-400"><i class="fa-solid fa-circle-check mr-1"></i> Benar sekali! Silakan lanjut ke slide berikutnya.</span>`;
+                document.getElementById(`belajar-opt-icon-${selectedIdx}`).innerHTML = `<i class="fa-solid fa-check text-emerald-400 font-bold"></i>`;
+                belajarSlideStatus[currentBelajarSlide] = true;
+
+                const nextBtn = document.getElementById('belajar-next-btn');
+                nextBtn.disabled = false;
+                nextBtn.className = "px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-emerald-950 text-xs font-bold shadow-md";
+            } else {
+                playWrongSFX();
+                feedbackEl.innerHTML = `<span class="text-red-400"><i class="fa-solid fa-circle-xmark mr-1"></i> Kurang tepat. Coba lagi!</span>`;
+                document.getElementById(`belajar-opt-icon-${selectedIdx}`).innerHTML = `<i class="fa-solid fa-xmark text-red-400 font-bold"></i>`;
+            }
+        }
+
+        function nextBelajarSlide() {
+            playClickSFX();
+            if(currentBelajarSlide < 5) {
+                currentBelajarSlide++;
+                renderBelajarSlide();
+            } else {
+                progressState.belajarCompleted = true;
+                playCorrectSFX();
+                showEduModal("Modul Belajar Selesai!", "Alhamdulillah! Menu BERMAIN kini telah terbuka. Mari uji kemampuanmu!");
+                backToMainMenu();
+            }
+        }
+
+        function prevBelajarSlide() {
+            playClickSFX();
+            if(currentBelajarSlide > 0) {
+                currentBelajarSlide--;
+                renderBelajarSlide();
+            }
+        }
+
+        // --- BERMAIN LOGIC ---
+        function renderBermainChallenge() {
+            const ch = bermainChallenges[currentBermainIdx];
+            document.getElementById('bermain-counter').innerText = `Tantangan ${currentBermainIdx + 1} dari 10`;
+            document.getElementById('bermain-stimulus').innerHTML = `<strong>Stimulus Literasi:</strong><p class="mt-1">${ch.stimulus}</p>`;
+            document.getElementById('bermain-question').innerText = ch.question;
+
+            const optBox = document.getElementById('bermain-options');
+            optBox.innerHTML = '';
+            ch.options.forEach((opt, idx) => {
+                optBox.innerHTML += `
+                    <label class="p-3 rounded-xl bg-emerald-900/60 border border-emerald-700/80 text-xs text-white flex items-center space-x-3 cursor-pointer hover:bg-emerald-800/80">
+                        <input type="radio" name="bermain-opt" value="${idx}" class="accent-amber-400">
+                        <span>${String.fromCharCode(65 + idx)}. ${opt}</span>
+                    </label>
+                `;
+            });
+            document.getElementById('bermain-feedback').innerHTML = '';
+        }
+
+        function submitBermainAnswer() {
+            playClickSFX();
+            const selected = document.querySelector('input[name="bermain-opt"]:checked');
+            if(!selected) {
+                playWrongSFX();
+                showEduModal("Pilih Jawaban", "Mohon pilih salah satu opsi jawaban terlebih dahulu!");
+                return;
+            }
+            const selectedIdx = parseInt(selected.value);
+            const ch = bermainChallenges[currentBermainIdx];
+            const feedback = document.getElementById('bermain-feedback');
+
+            if(selectedIdx === ch.correct) {
+                playCorrectSFX();
+                bermainScore += 10;
+                document.getElementById('bermain-score').innerText = bermainScore;
+                feedback.innerHTML = `<span class="text-emerald-400"><i class="fa-solid fa-circle-check"></i> Jawaban Benar! (+10 Poin)</span>`;
+            } else {
+                playWrongSFX();
+                feedback.innerHTML = `<span class="text-red-400"><i class="fa-solid fa-circle-xmark"></i> Kurang tepat. Jawaban benar: Opsi ${String.fromCharCode(65 + ch.correct)}</span>`;
+            }
+
+            const btn = document.getElementById('bermain-submit-btn');
+            if(currentBermainIdx < 9) {
+                btn.innerText = "Lanjut ke Tantangan Berikutnya";
+                btn.onclick = () => {
+                    playClickSFX();
+                    currentBermainIdx++;
+                    renderBermainChallenge();
+                    btn.innerText = "Periksa Jawaban";
+                    btn.onclick = submitBermainAnswer;
+                };
+            } else {
+                btn.innerText = "Selesaikan Bermain & Buka Berlatih";
+                btn.onclick = () => {
+                    progressState.bermainCompleted = true;
+                    playCorrectSFX();
+                    showEduModal("Bermain Selesai!", `Selamat! Skor Bermain Anda: ${bermainScore}/100. Menu BERLATIH kini telah terbuka!`);
+                    backToMainMenu();
+                };
+            }
+        }
+
+        // --- BERLATIH LOGIC ---
+        function renderBerlatihQuestion() {
+            const q = berlatihQuestions[currentBerlatihIdx];
+            document.getElementById('berlatih-counter').innerText = `Soal ${currentBerlatihIdx + 1} dari 10`;
+            document.getElementById('berlatih-level-badge').innerText = `Level ${q.level} (${q.weight} Poin)`;
+            document.getElementById('berlatih-stimulus').innerHTML = `<strong>Stimulus Asesmen:</strong><p class="mt-1">${q.stimulus}</p>`;
+            document.getElementById('berlatih-question').innerText = q.question;
+
+            const optBox = document.getElementById('berlatih-options');
+            optBox.innerHTML = '';
+            q.options.forEach((opt, idx) => {
+                optBox.innerHTML += `
+                    <label class="p-3 rounded-xl bg-emerald-900/60 border border-emerald-700/80 text-xs text-white flex items-center space-x-3 cursor-pointer hover:bg-emerald-800/80">
+                        <input type="radio" name="berlatih-opt" value="${idx}" class="accent-amber-400">
+                        <span>${String.fromCharCode(65 + idx)}. ${opt}</span>
+                    </label>
+                `;
+            });
+        }
+
+        function nextBerlatihQuestion() {
+            playClickSFX();
+            const selected = document.querySelector('input[name="berlatih-opt"]:checked');
+            if(!selected) {
+                playWrongSFX();
+                showEduModal("Pilih Jawaban", "Mohon pilih salah satu opsi jawaban!");
+                return;
+            }
+            const selectedIdx = parseInt(selected.value);
+            const q = berlatihQuestions[currentBerlatihIdx];
+            const isCorrect = (selectedIdx === q.correct);
+
+            // Simpan detail jawaban siswa untuk dikirim ke GAS
+            berlatihAnswers.push({
+                questionNum: currentBerlatihIdx + 1,
+                selectedOption: String.fromCharCode(65 + selectedIdx),
+                selectedText: q.options[selectedIdx],
+                isCorrect: isCorrect
+            });
+
+            if(isCorrect) {
+                playCorrectSFX();
+                berlatihScore += q.weight;
+                if(q.level === 1) levelMastery.level1++;
+                if(q.level === 2) levelMastery.level2++;
+                if(q.level === 3) levelMastery.level3++;
+            } else {
+                playWrongSFX();
+            }
+
+            if(currentBerlatihIdx < 9) {
+                currentBerlatihIdx++;
+                renderBerlatihQuestion();
+            } else {
+                progressState.berlatihCompleted = true;
+                sendDataToGoogleSheets();
+                generateReport();
+            }
+        }
+
+        // --- PENGIRIMAN DATA KE GOOGLE APPS SCRIPT ---
+        function sendDataToGoogleSheets() {
+            if (!GAS_URL || GAS_URL === "URL_GAS_ANDA_DISINI") {
+                console.warn("GAS_URL belum dikonfigurasi secara valid.");
+                return;
+            }
+
+            // Hitung statistik jawaban
+            let totalCorrect = berlatihAnswers.filter(a => a.isCorrect).length;
+            let totalWrong = berlatihAnswers.length - totalCorrect;
+
+            // Kumpulkan daftar pertanyaan dan bank soal untuk otomatisasi Sheet
+            const payload = {
+                studentName: studentData.name,
+                studentClass: studentData.grade,
+                bermainScore: bermainScore,
+                berlatihScore: berlatihScore,
+                correctCount: totalCorrect,
+                wrongCount: totalWrong,
+                answers: berlatihAnswers,
+                soalData: [...bermainChallenges, ...berlatihQuestions]
+            };
+
+            fetch(GAS_URL, {
+                method: "POST",
+                mode: "no-cors",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(() => console.log("Data hasil pengerjaan berhasil dikirim ke Google Sheets."))
+            .catch(err => console.error("Gagal mengirim data ke Google Sheets:", err));
+        }
+
+        // --- REFERENSI TABS ---
+        function switchRefTab(num) {
+            playClickSFX();
+            for(let i=1; i<=3; i++) {
+                document.getElementById(`ref-tab-${i}`).classList.add('hidden');
+                document.getElementById(`ref-tab-${i}-btn`).className = "px-4 py-2 rounded-xl bg-emerald-800 hover:bg-emerald-700 text-emerald-100 font-semibold text-xs border border-emerald-700 transition-all flex items-center gap-1.5";
+            }
+            document.getElementById(`ref-tab-${num}`).classList.remove('hidden');
+            document.getElementById(`ref-tab-${num}-btn`).className = "px-4 py-2 rounded-xl bg-amber-500 text-emerald-950 font-bold text-xs shadow-lg transition-all flex items-center gap-1.5";
+            if(num === 3) renderTTSBoard();
+        }
+
+        // --- TTS GAME ---
+        const ttsLayout = [
+            ['','','H','','','','','','',''],
+            ['K','A','N','Z','U','N','','','',''],
+            ['','','U','','','T','','','',''],
+            ['','','Q','','','A','','','',''],
+            ['T','I','L','A','M','U','T','A','',''],
+            ['','','A','','','K','','','',''],
+            ['','','L','','','A','','','',''],
+            ['','T','A','K','A','B','U','R','',''],
+            ['','','H','','','L','','','',''],
+            ['','','','','','','','','','']
+        ];
+        const ttsNumbers = { "1,0": "1", "0,2": "2", "4,0": "3", "2,5": "4", "7,1": "5" };
+
+        function renderTTSBoard() {
+            const board = document.getElementById('tts-board');
+            if(board.children.length > 0) return;
+            let html = '';
+            for(let r=0; r<10; r++) {
+                for(let c=0; c<10; c++) {
+                    const char = ttsLayout[r][c];
+                    const num = ttsNumbers[`${r},${c}`] || '';
+                    if(char !== '') {
+                        html += `<div class="tts-cell tts-cell-active">${num ? `<span class="tts-num">${num}</span>` : ''}<input type="text" maxlength="1" data-correct="${char}" oninput="this.value = this.value.toUpperCase()"></div>`;
+                    } else {
+                        html += `<div class="tts-cell tts-cell-blocked"></div>`;
+                    }
+                }
+            }
+            board.innerHTML = html;
+        }
+
+        function checkTTSAnswers() {
+            playClickSFX();
+            const inputs = document.querySelectorAll('#tts-board input');
+            let correct = 0;
+            inputs.forEach(inp => {
+                if(inp.value.trim().toUpperCase() === inp.getAttribute('data-correct')) {
+                    correct++;
+                    inp.parentElement.style.borderColor = '#10b981';
+                } else {
+                    inp.parentElement.style.borderColor = '#ef4444';
+                }
+            });
+            const fb = document.getElementById('tts-feedback');
+            if(correct === inputs.length) {
+                playCorrectSFX();
+                fb.innerHTML = `<span class="text-amber-300">Sempurna! Semua TTS dijawab dengan tepat!</span>`;
+            } else {
+                playWrongSFX();
+                fb.innerHTML = `<span class="text-amber-200">Benar ${correct} dari ${inputs.length} huruf. Periksa kembali kotak merah!</span>`;
+            }
+        }
+
+        // --- LAPORAN HASIL BELAJAR ---
+        function generateReport() {
+            document.getElementById('report-student-name').innerText = studentData.name;
+            document.getElementById('report-student-class').innerText = studentData.grade;
+            document.getElementById('report-date').innerText = new Date().toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' });
+
+            document.getElementById('report-bermain-score').innerText = `${bermainScore} / 100`;
+            document.getElementById('report-berlatih-score').innerText = `${berlatihScore}`;
+
+            document.getElementById('report-level-1').innerText = `${levelMastery.level1} / 3 Soal Benar`;
+            document.getElementById('report-level-2').innerText = `${levelMastery.level2} / 4 Soal Benar`;
+            document.getElementById('report-level-3').innerText = `${levelMastery.level3} / 3 Soal Benar`;
+
+            showPage('report-page');
+        }
+
+        function downloadPDFReport() {
+            playClickSFX();
+            const element = document.getElementById('printable-report');
+            const opt = {
+                margin:       0.3,
+                filename:     `Laporan_MPI_Hauqallah_${studentData.name}.pdf`,
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2 },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            if(typeof html2pdf !== 'undefined') {
+                html2pdf().set(opt).from(element).save();
+            } else {
+                window.print();
+            }
+        }
+    </script>
+</body>
+</html>
